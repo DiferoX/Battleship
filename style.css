@@ -21,9 +21,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   background-color: var(--firstDark);
   background-image: url(./images/wallpaper.jpg);
 }
+
+
+/* ======== G A M E B O A R D ======== */
 
 .gameboard
 {
@@ -33,7 +37,10 @@
   justify-items: center;
   align-items: center;
   grid-template-columns: 1fr 1fr;
+  /*
   background-image: linear-gradient(to top left, rgba(0, 0, 255, 0.2), rgba(0, 255, 255, 0.6), rgba(0, 0, 255, 0.2), rgba(0, 255, 255, 0.6), rgba(0, 0, 255, 0.2));
+  */
+  background-image: linear-gradient(to top left, rgba(0, 0, 255, 0.4), rgba(0, 255, 255, 0.8), rgba(0, 0, 255, 0.4), rgba(0, 255, 255, 0.8), rgba(0, 0, 255, 0.4));
   border-radius: 10px;
   box-shadow: 25px 25px 75px rgba(0, 0, 0, 0.25),
   10px 10px 70px rgba(0, 0, 0, 0.25),
@@ -74,7 +81,7 @@
   transition: 0.2s;
   cursor: pointer;
 }
-
+/*
 .gameboard div div:hover:before
 {
   opacity: 1;
@@ -90,9 +97,9 @@
   background-position: center;
   border-radius: 50%;
 }
+*/
 
-/*
-.gameboard div div:hover:before
+.gameboard div div.onShip:before
 {
   opacity: 1;
   content: '';
@@ -106,8 +113,8 @@
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5),
   inset 2px 2px 3px rgba(255, 255, 255, 0.25),
   inset -3px -3px 5px rgba(0, 0, 0, 0.5);
+  transition: 1s;
 }
-*/
 
 /*
 .gameboard div div:hover:after
@@ -165,7 +172,132 @@
 
 .gameboard div div p
 {
-  opacity: 0;
+  display: none;
   position: absolute;
   font-size: 10px;
+}
+
+
+/* ======== S H I P ======== */
+
+.btnContent
+{
+  height: 20vh;
+  width: 60%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  justify-items: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.contentShipBoard
+{
+  height: 100%;
+  width: 100%;
+  padding: 2% 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background-image: linear-gradient(to top left, rgba(0, 0, 255, 0.4), rgba(0, 255, 255, 0.8), rgba(0, 0, 255, 0.4), rgba(0, 255, 255, 0.8), rgba(0, 0, 255, 0.4));
+  border-radius: 10px;
+  box-shadow: 25px 25px 75px rgba(0, 0, 0, 0.25),
+  10px 10px 70px rgba(0, 0, 0, 0.25),
+  inset 5px 5px 10px rgba(0, 0, 0, 0.5),
+  inset 5px 5px 20px rgba(255, 255, 255, 0.2),
+  inset -5px -5px 15px rgba(0, 0, 0, 0.8);
+}
+
+.contentShipBoard button
+{
+  padding-top: 20px;
+  border-radius: 10px;
+  border-top-left-radius: 40%;
+  border-top-right-radius: 40%;
+  background-color: #aaa;
+  box-shadow: 0 0 5px #00f,
+  0 0 10px #00f,
+  0 0 20px #00f,
+  0 0 30px #00f,
+  inset 2px 2px 3px rgba(255, 255, 255, 0.25),
+  inset -3px -3px 5px rgba(0, 0, 0, 0.5);
+  transition: 1s;
+}
+
+.contentShipBoard button.shipActive
+{
+  box-shadow: 0 0 5px #0f0,
+  0 0 10px #0f0,
+  0 0 20px #0f0,
+  0 0 30px #0f0,
+  inset 2px 2px 3px rgba(255, 255, 255, 0.25),
+  inset -3px -3px 5px rgba(0, 0, 0, 0.5);
+  transition: 1s;
+}
+
+.contentShipBoard button.shipSunk
+{
+  box-shadow: 0 0 5px #f00,
+  0 0 10px #f00,
+  0 0 20px #f00,
+  0 0 30px #f00,
+  inset 2px 2px 3px rgba(255, 255, 255, 0.25),
+  inset -3px -3px 5px rgba(0, 0, 0, 0.5);
+  transition: 1s;
+}
+
+.contentShipBoard button.shipSunk div
+{
+  height: 50%;
+  width: 40%;
+  border-radius: 50%;
+  background-color: #a11;
+  box-shadow: -5px -5px 20px rgba(255, 255, 255, 0.1),
+            5px 5px 10px rgba(0, 0, 0, 1),
+            inset -2px -2px 5px rgba(255, 255, 255, 0.1),
+            inset 2px 2px 5px rgba(0, 0, 0, 0.5),
+            0 0 0 2px #1f1f1f;
+  transition: 1s;
+}
+
+#btnShipBigPlayer, #btnShipBigCPU
+{
+  height: 100%;
+  width: 10%;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  justify-items: center;
+  align-items: center;
+}
+
+#btnShipMedium1Player, #btnShipMedium2Player, #btnShipMedium1CPU, #btnShipMedium2CPU
+{
+  height: 70%;
+  width: 9%;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  justify-items: center;
+  align-items: center;
+}
+
+#btnShipSmall1Player, #btnShipSmall2Player, #btnShipSmall3Player, #btnShipSmall1CPU, #btnShipSmall2CPU, #btnShipSmall3CPU
+{
+  height: 40%;
+  width: 6%;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  justify-items: center;
+  align-items: center;
+}
+
+.contentShipBoard button div
+{
+  height: 50%;
+  width: 40%;
+  background-color: #555;
+  border-radius: 50%;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5),
+  inset 2px 2px 3px rgba(255, 255, 255, 0.25),
+  inset -3px -3px 5px rgba(0, 0, 0, 0.5);
 }
