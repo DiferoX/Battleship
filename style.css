@@ -23,13 +23,81 @@
   align-items: center;
   flex-direction: column;
   background-color: var(--firstDark);
-  background-image: url(./images/wallpaper.jpg);
+  background-image: url(./images/2308.jpg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: -1;
+}
+
+.mainContainer::before
+{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(17, 17, 17, 0.2);
+  filter: blur(5px);
+  z-index: 0;
+}
+
+
+/* ======== C H E C K B O X ======== */
+
+input[type="checkbox"]
+{
+  position: relative;
+  height: 10vh;
+  width: 10vh;
+  margin: 10px;
+  outline: none;
+  background: #111;
+  -webkit-appearance: none;
+  cursor: pointer;
+  border-radius: 50%;
+  box-shadow: -5px -5px 20px rgba(255, 255, 255, 0.1),
+              5px 5px 10px rgba(0, 0, 0, 1),
+              inset -5px -5px 10px rgba(255, 255, 255, 0.1),
+              inset 5px 5px 10px rgba(0, 0, 0, 0.5),
+              0 0 0 10px #1f1f1f,
+              0 0 5px #0ff,
+              0 0 10px #0ff,
+              0 0 20px #0ff,
+              0 0 30px #0ff,
+              0 0 40px #0ff,
+              0 0 50px #0ff;
+  z-index: 1;
+  transition: 1s;
+  outline: hidden;
+}
+
+input[type="checkbox"]::before
+{
+  content: "";
+  position: absolute;
+  top: 45%;
+  left: 5%;
+  width: 90%;
+  height: 10%;
+  background: linear-gradient(to top right, darkred, red, darkred, red);
+  border-radius: 20px;
+  box-shadow: 0 0 0 1px #232323;
+  clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
+  transform: rotate(90deg);
+  transition: 1s;
+}
+
+input[type="checkbox"]:checked:before
+{
+  transform: rotate(0deg);
 }
 
 
 /* ======== G A M E B O A R D ======== */
 
-.gameboard
+#gameboard
 {
   height: 60vh;
   width: 60%;
@@ -37,9 +105,6 @@
   justify-items: center;
   align-items: center;
   grid-template-columns: 1fr 1fr;
-  /*
-  background-image: linear-gradient(to top left, rgba(0, 0, 255, 0.2), rgba(0, 255, 255, 0.6), rgba(0, 0, 255, 0.2), rgba(0, 255, 255, 0.6), rgba(0, 0, 255, 0.2));
-  */
   background-image: linear-gradient(to top left, rgba(0, 0, 255, 0.4), rgba(0, 255, 255, 0.8), rgba(0, 0, 255, 0.4), rgba(0, 255, 255, 0.8), rgba(0, 0, 255, 0.4));
   border-radius: 10px;
   box-shadow: 25px 25px 75px rgba(0, 0, 0, 0.25),
@@ -47,11 +112,13 @@
   inset 5px 5px 10px rgba(0, 0, 0, 0.5),
   inset 5px 5px 20px rgba(255, 255, 255, 0.2),
   inset -5px -5px 15px rgba(0, 0, 0, 0.8);
+  z-index: 1;
 }
 
-.gameboard div
+#gameboard div
 {
   opacity: 1;
+  clip-path: circle(100.0% at 50% 50%);
   height: 90%;
   width: 90%;
   display: grid;
@@ -64,9 +131,16 @@
   inset 5px 5px 10px rgba(0, 0, 0, 0.5),
   inset 5px 5px 20px rgba(255, 255, 255, 0.2),
   inset -5px -5px 15px rgba(0, 0, 0, 0.8);
+  transition: 2s;
 }
 
-.gameboard div div
+#gameboard div.hide
+{
+  clip-path: circle(0.0% at 100% 50%);
+  transition: 2s;
+}
+
+#gameboard div div
 {
   opacity: 1;
   position: relative;
@@ -82,7 +156,7 @@
   cursor: pointer;
 }
 /*
-.gameboard div div:hover:before
+#gameboard div div:hover:before
 {
   opacity: 1;
   content: '';
@@ -99,7 +173,7 @@
 }
 */
 
-.gameboard div div.onShip:before
+#gameboard div div.onShip:before
 {
   opacity: 1;
   content: '';
@@ -117,7 +191,7 @@
 }
 
 /*
-.gameboard div div:hover:after
+#gameboard div div:hover:after
 {
   opacity: 1;
   content: '';
@@ -137,7 +211,7 @@
 }
 */
 
-.gameboard div div.active::before
+#gameboard div div.active::before
 {
   opacity: 1;
   content: '';
@@ -159,18 +233,18 @@
   transition: 1s;
 }
 
-.gameboard div div.active:hover:before
+#gameboard div div.active:hover:before
 {
   background-image: none;
 }
 
-.gameboard div div:hover
+#gameboard div div:hover
 {
   background-color: rgba(17, 255, 255, 0.5);
   transition: 0.2s;
 }
 
-.gameboard div div p
+#gameboard div div p
 {
   display: none;
   position: absolute;
@@ -190,6 +264,7 @@
   justify-items: center;
   align-items: center;
   margin: 20px 0;
+  z-index: 1;
 }
 
 .contentShipBoard
