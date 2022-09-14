@@ -1,31 +1,33 @@
-import { divsArray } from ".";
+import { arrayBoardCPU, arrayBoardPlayer1 } from ".";
 
-let board1 = document.querySelector ('#board1');
-let board2 = document.querySelector ('#board2');
+let boardPlayer1 = document.querySelector ('#boardPlayer1');
+let boardCPU = document.querySelector ('#boardCPU');
 
 
 function gameboard (rows, cols)
 {
-  board1.style.setProperty ('--grid-rows', rows);
-  board1.style.setProperty ('--grid-cols', cols);
+  boardPlayer1.style.setProperty ('--grid-rows', rows);
+  boardPlayer1.style.setProperty ('--grid-cols', cols);
 
-  board2.style.setProperty ('--grid-rows', rows);
-  board2.style.setProperty ('--grid-cols', cols);
+  boardCPU.style.setProperty ('--grid-rows', rows);
+  boardCPU.style.setProperty ('--grid-cols', cols);
 
-  for (let i = 0; i < (rows*cols); i++)
+  for (let i = 0; i < (rows * cols); i++)
   {
-    let divsBoard1 = document.createElement('div');
-    let txtBoard1 = document.createElement('p');
-    txtBoard1.textContent = i;
-    divsArray[i] = divsBoard1;
-    
-    board1.appendChild(divsBoard1);
-    divsBoard1.appendChild(txtBoard1)
+    let divsBoardPlayer1 = document.createElement('div');
+    let txtBoardPlayer1 = document.createElement('p');
+    txtBoardPlayer1.textContent = i;
+    arrayBoardPlayer1[i] = divsBoardPlayer1;
+    boardPlayer1.appendChild(divsBoardPlayer1);
+    divsBoardPlayer1.appendChild(txtBoardPlayer1)
 
-    let divsBoard2 = document.createElement('div');
-    board2.appendChild(divsBoard2);
+    let divsBoardCPU = document.createElement('div');
+    let txtBoardCPU = document.createElement('p');
+    txtBoardCPU.textContent = i;
+    arrayBoardCPU[i] = divsBoardCPU;
+    boardCPU.appendChild(divsBoardCPU);
+    divsBoardCPU.appendChild(txtBoardCPU)
   }
-  //console.log(array);
 }
 
 export default gameboard;

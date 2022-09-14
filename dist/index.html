@@ -10,11 +10,11 @@
   <body>
     <div class="mainContainer">
 
-      <button id="btnRotate">Rotate Ships</button>
+      <input type="checkbox" id="btnRotate">
 
-      <div class="gameboard">
-        <div id="board1"></div>
-        <div id="board2"></div>
+      <div id="gameboard">
+        <div id="boardPlayer1"></div>
+        <div id="boardCPU"></div>
       </div>
 
       <div class="btnContent">
@@ -41,27 +41,26 @@
         </div>
 
         <div class="contentShipBoard">
-          <button class="shipSunk" id="btnShipBigCPU">
+          <button id="btnShipBigCPU" disabled>
             <div></div><div></div><div></div><div></div>
           </button>
-          <button class="shipActive" id="btnShipMedium1CPU">
+          <button id="btnShipMedium1CPU" disabled>
             <div></div><div></div><div></div>
           </button>
-          <button id="btnShipMedium2CPU">
+          <button id="btnShipMedium2CPU" disabled>
             <div></div><div></div><div></div>
           </button>
-          <button id="btnShipSmall1CPU">
+          <button id="btnShipSmall1CPU" disabled>
             <div></div><div></div>
           </button>
-          <button id="btnShipSmall2CPU">
+          <button id="btnShipSmall2CPU" disabled>
             <div></div><div></div>
           </button>
-          <button id="btnShipSmall3CPU">
+          <button id="btnShipSmall3CPU" disabled>
             <div></div><div></div>
           </button>
         </div>
 
-        
       </div>
     </div>
 

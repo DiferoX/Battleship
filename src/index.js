@@ -1,20 +1,13 @@
 import gameboard from "./gameboard";
-import battleShip, { Ship } from "./battleShip";
+import boardPlayer1 from "./boardPlayer1";
+import boardCPU from "./boardCPU";
 
-export let divsArray = [];
-export let objectsArray = [];
+export let arrayBoardPlayer1 = [];
+export let arrayBoardCPU = [];
+export let objectsArrayPlayer1 = [];
+export let objectsArrayCPU = [];
 
 
-gameboard(10, 10);
-battleShip ();
-
-/*
-let list = document.querySelectorAll ('#board1 div');
-function activeLink ()
-{
-  divsArray.forEach ((item) =>
-  this.classList.add('active'));
-}
-list.forEach ((item) =>
-item.addEventListener ('click', activeLink));
-*/
+gameboard (10, 10);
+boardPlayer1 ();
+boardCPU ();
