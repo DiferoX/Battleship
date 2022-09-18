@@ -10,7 +10,15 @@
   <body>
     <div class="mainContainer">
 
-      <input type="checkbox" id="btnRotate">
+      <div id="divLeft"></div>
+      <div id="divRight"></div>
+
+      <div id="boardInfo">
+        <div id="checkbox">
+          <label for="checkbox">N</label>
+          <input type="checkbox" id="btnRotate" name="checkbox">
+        </div>
+      </div>
 
       <div id="gameboard">
         <div id="boardPlayer1"></div>
@@ -62,6 +70,7 @@
         </div>
 
       </div>
+      <div id="displayWin" hidden></div>
     </div>
 
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
