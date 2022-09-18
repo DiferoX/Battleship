@@ -5,7 +5,7 @@ import { Ship } from "./object";
 let sw = 0;
 
 
-function addShip (ship, list, btnNext)
+function addShip (ship, list, btnNext, btnDiv)
 {
   let id = Number(list.lastChild.textContent);
   let forId = 0;
@@ -28,6 +28,9 @@ function addShip (ship, list, btnNext)
         for (let i = 0; i < ship.length; i++)
         {
           ship.coords[i].coord = forId;
+          ship.coords[i].shipDiv = btnDiv[i];
+          arrayBoardPlayer1[forId].style.backgroundColor = 'blue';
+          arrayBoardPlayer1[forId].classList.add('onShip');
           forId += 10;
         }
         btnNext.disabled = false;
@@ -56,6 +59,9 @@ function addShip (ship, list, btnNext)
         for (let i = 0; i < ship.length; i++)
         {
           ship.coords[i].coord = forId;
+          ship.coords[i].shipDiv = btnDiv[i];
+          arrayBoardPlayer1[forId].style.backgroundColor = 'blue';
+          arrayBoardPlayer1[forId].classList.add('onShip');
           forId ++;
         }
         ship.hover = false;
@@ -89,7 +95,7 @@ function displayPlayer1 (list)
     {
       if (bigShip.hover === true)
       {
-        addShip(bigShip, list, btnShipMedium1Player);
+        addShip(bigShip, list, btnShipMedium1Player, this.children);
       }
     }));
   });
@@ -109,7 +115,7 @@ function displayPlayer1 (list)
     {
       if (mediumShip1.hover === true)
       {
-        addShip(mediumShip1, list, btnShipMedium2Player);
+        addShip(mediumShip1, list, btnShipMedium2Player, this.children);
       }
     }));
   });
@@ -128,7 +134,7 @@ function displayPlayer1 (list)
     {
       if (mediumShip2.hover === true)
       {
-        addShip(mediumShip2, list, btnShipSmall1Player);
+        addShip(mediumShip2, list, btnShipSmall1Player, this.children);
       }
     }));
   });
@@ -147,7 +153,7 @@ function displayPlayer1 (list)
     {
       if (smallShip1.hover === true)
       {
-        addShip(smallShip1, list, btnShipSmall2Player);
+        addShip(smallShip1, list, btnShipSmall2Player, this.children);
       }
     }));
   });
@@ -166,7 +172,7 @@ function displayPlayer1 (list)
     {
       if (smallShip2.hover === true)
       {
-        addShip(smallShip2, list, btnShipSmall3Player);
+        addShip(smallShip2, list, btnShipSmall3Player, this.children);
       }
     }));
   });
@@ -187,7 +193,7 @@ function displayPlayer1 (list)
     {
       if (smallShip3.hover === true)
       {
-        addShip(smallShip3, list, btnShipBigCPU);
+        addShip(smallShip3, list, btnShipBigCPU, this.children);
       }
     }));
   });
@@ -232,7 +238,6 @@ function boardPlayer1 ()
         if (element.coord !== null)
         {
           arrayBoardPlayer1[element.coord].style.backgroundColor = 'blue';
-          arrayBoardPlayer1[element.coord].classList.add('onShip');
         }
       });
     });

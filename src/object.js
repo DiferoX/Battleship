@@ -9,18 +9,53 @@ export class Ship
     this.shipId = null;
     this.length = null;
     this.hover = true;
-    this.coords = [{coord: null, hit: false}, {coord: null, hit: false}, {coord: null, hit: false}, {coord: null, hit: false}];
+    this.coords = [ {coord: null, hit: false, shipDiv: null}, 
+                    {coord: null, hit: false, shipDiv: null}, 
+                    {coord: null, hit: false, shipDiv: null}, 
+                    {coord: null, hit: false, shipDiv: null}];
+    this.isSunk = false;
   };
 
   onHit ()
   {
-    if (this.data === null)
+    let sunk = true;
+    for (let i = 0; i < this.length; i++)
     {
-      console.log ('Ok');
+      if (this.coords[i].hit === false)
+        sunk = false;
     }
-    else
+    if (sunk === true)
     {
-      console.log ('X');
+      let btn = this.coords[0].shipDiv.parentElement;
+      btn.classList.add('shipSunk');
+      this.isSunk = true;
+      this.onSunk();
+    }
+  }
+
+  onSunk ()
+  {
+    let winPlayer1 = true;
+    objectsArrayPlayer1.forEach (object => 
+    {
+      if (object.isSunk === false)
+        winPlayer1 = false;
+    });
+
+    let winCPU = true;
+    objectsArrayCPU.forEach (object => 
+    {
+      if (object.isSunk === false)
+        winCPU = false;
+    });
+
+    if (winPlayer1 === true)
+    {
+      alert('Player 1 Win');
+    }
+    else if (winCPU === true)
+    {
+      alert('CPU Win');
     }
   }
 

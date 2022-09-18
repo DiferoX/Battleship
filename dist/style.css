@@ -14,20 +14,28 @@
   --secondDark: #555;
 }
 
+body
+{
+  display: flex;
+  justify-content: center;
+  background-color: var(--firstDark);
+  z-index: -1;
+}
+
 .mainContainer
 {
+  position: relative;
   height: 100vh;
-  width: 100%;
+  width: 86%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-color: var(--firstDark);
   background-image: url(./images/2308.jpg);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  z-index: -1;
+  z-index: 0;
 }
 
 .mainContainer::before
@@ -43,8 +51,45 @@
   z-index: 0;
 }
 
+#divLeft
+{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 2.5%;
+  background-image: linear-gradient(to right, var(--firstDark), transparent);
+}
+
+#divRight
+{
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 2.5%;
+  background-image: linear-gradient(to right, transparent, var(--firstDark));
+}
+
 
 /* ======== C H E C K B O X ======== */
+
+#checkbox
+{
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+label
+{
+  color: red;
+  font-weight: bolder;
+  z-index: 2;
+}
 
 input[type="checkbox"]
 {
@@ -53,7 +98,7 @@ input[type="checkbox"]
   width: 10vh;
   margin: 10px;
   outline: none;
-  background: #111;
+  background: var(--firstDark);
   -webkit-appearance: none;
   cursor: pointer;
   border-radius: 50%;
@@ -77,9 +122,9 @@ input[type="checkbox"]::before
 {
   content: "";
   position: absolute;
-  top: 45%;
-  left: 5%;
-  width: 90%;
+  top: 40%;
+  left: 11%;
+  width: 80%;
   height: 10%;
   background: linear-gradient(to top right, darkred, red, darkred, red);
   border-radius: 20px;
@@ -91,7 +136,28 @@ input[type="checkbox"]::before
 
 input[type="checkbox"]:checked:before
 {
+  top: 45%;
+  left: 8%;
   transform: rotate(0deg);
+}
+
+input[type="checkbox"]::after
+{
+  opacity: 1;
+  content: '';
+  position: absolute;
+  top: 47.5%;
+  left: 47.5%;
+  height: 5px;
+  width: 5px;
+  background-color: #0ff;
+  box-shadow: 0 0 5px #0ff,
+              0 0 10px #0ff,
+              0 0 20px #0ff,
+              0 0 30px #0ff,
+              0 0 40px #0ff,
+              0 0 50px #0ff;
+  border-radius: 50%;
 }
 
 
@@ -100,7 +166,7 @@ input[type="checkbox"]:checked:before
 #gameboard
 {
   height: 60vh;
-  width: 60%;
+  width: 70%;
   display: grid;
   justify-items: center;
   align-items: center;
@@ -132,6 +198,7 @@ input[type="checkbox"]:checked:before
   inset 5px 5px 20px rgba(255, 255, 255, 0.2),
   inset -5px -5px 15px rgba(0, 0, 0, 0.8);
   transition: 2s;
+  z-index: 1;
 }
 
 #gameboard div.hide
@@ -154,24 +221,25 @@ input[type="checkbox"]:checked:before
               0 0 0 2px #1f1f1f;
   transition: 0.2s;
   cursor: pointer;
+  z-index: 1;
 }
-/*
-#gameboard div div:hover:before
+
+#gameboard div div.empty:hover:before
 {
   opacity: 1;
   content: '';
   position: absolute;
-  top: 5%;
-  left: 5%;
-  height: 90%;
-  width: 90%;
+  top: 15%;
+  left: 15%;
+  height: 70%;
+  width: 70%;
   display: flex;
   background-image: url(./images/add-circle.svg);
   background-repeat: no-repeat;
   background-position: center;
   border-radius: 50%;
 }
-*/
+
 
 #gameboard div div.onShip:before
 {
@@ -188,28 +256,27 @@ input[type="checkbox"]:checked:before
   inset 2px 2px 3px rgba(255, 255, 255, 0.25),
   inset -3px -3px 5px rgba(0, 0, 0, 0.5);
   transition: 1s;
+  pointer-events: none;
 }
 
-/*
-#gameboard div div:hover:after
+#gameboard div div.fail::before
 {
   opacity: 1;
   content: '';
   position: absolute;
-  top: 45%;
-  left: 45%;
-  height: 5px;
-  width: 5px;
-  background-color: #0ff;
-  box-shadow: 0 0 5px #0ff,
-              0 0 10px #0ff,
-              0 0 20px #0ff,
-              0 0 30px #0ff,
-              0 0 40px #0ff,
-              0 0 50px #0ff;
+  top: 15%;
+  left: 15%;
+  height: 70%;
+  width: 70%;
+  background-color: #555;
   border-radius: 50%;
+  box-shadow: -5px -5px 20px rgba(255, 255, 255, 0.1),
+            5px 5px 10px rgba(0, 0, 0, 1),
+            inset -2px -2px 5px rgba(255, 255, 255, 0.1),
+            inset 2px 2px 5px rgba(0, 0, 0, 0.5),
+            0 0 0 2px #1f1f1f;
+  transition: 1s;
 }
-*/
 
 #gameboard div div.active::before
 {
@@ -322,7 +389,7 @@ input[type="checkbox"]:checked:before
   transition: 1s;
 }
 
-.contentShipBoard button.shipSunk div
+.contentShipBoard button div.hit
 {
   height: 50%;
   width: 40%;

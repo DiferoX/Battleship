@@ -6,7 +6,7 @@ import { Ship } from "./object";
 let sw = 0;
 
 
-function addShip (ship)
+function addShip (ship, btnDiv)
 {
   let forId = 0;
   sw = Math.floor(Math.random() * 2);
@@ -20,8 +20,9 @@ function addShip (ship)
       for (let i = 0; i < ship.length; i++)
       {
         arrayBoardCPU[forId].style.backgroundColor = 'red';
-        arrayBoardCPU[forId].classList.add('onShip');
+        //arrayBoardCPU[forId].classList.add('onShip');
         ship.coords[i].coord = forId;
+        ship.coords[i].shipDiv = btnDiv[i];
         forId += 10;
       }
       ship.hover = false;
@@ -32,8 +33,9 @@ function addShip (ship)
       for (let i = 0; i < ship.length; i++)
       {
         arrayBoardCPU[forId].style.backgroundColor = 'red';
-        arrayBoardCPU[forId].classList.add('onShip');
+        //arrayBoardCPU[forId].classList.add('onShip');
         ship.coords[i].coord = forId;
+        ship.coords[i].shipDiv = btnDiv[i];
         forId ++;
       }
       ship.hover = false;
@@ -80,8 +82,8 @@ function displayCPU ()
       btnShipMedium1CPU.disabled = false;
       btnShipMedium1CPU.click();
       btnShipMedium1CPU.disabled = true;
-    }, 2000);
-    addShip(bigShip);
+    }, 1000);
+    addShip(bigShip, this.children);
   });
 
   let btnShipMedium1CPU = document.getElementById ('btnShipMedium1CPU');     // Medium Ship 1 CPU
@@ -99,8 +101,8 @@ function displayCPU ()
       btnShipMedium2CPU.disabled = false;
       btnShipMedium2CPU.click();
       btnShipMedium2CPU.disabled = true;
-    }, 2000);
-    addShip(mediumShip1);
+    }, 1000);
+    addShip(mediumShip1, this.children);
   });
 
   let btnShipMedium2CPU = document.getElementById ('btnShipMedium2CPU');     // Medium Ship 2 CPU
@@ -118,8 +120,8 @@ function displayCPU ()
       btnShipSmall1CPU.disabled = false;
       btnShipSmall1CPU.click();
       btnShipSmall1CPU.disabled = true;
-    }, 2000);
-    addShip(mediumShip2);
+    }, 1000);
+    addShip(mediumShip2, this.children);
   });
 
   let btnShipSmall1CPU = document.getElementById ('btnShipSmall1CPU');     // Small Ship 1 CPU
@@ -137,8 +139,8 @@ function displayCPU ()
       btnShipSmall2CPU.disabled = false;
       btnShipSmall2CPU.click();
       btnShipSmall2CPU.disabled = true;
-    }, 2000);
-    addShip(smallShip1);
+    }, 1000);
+    addShip(smallShip1, this.children);
   });
 
   let btnShipSmall2CPU = document.getElementById ('btnShipSmall2CPU');     // Small Ship 2 CPU
@@ -156,8 +158,8 @@ function displayCPU ()
       btnShipSmall3CPU.disabled = false;
       btnShipSmall3CPU.click();
       btnShipSmall3CPU.disabled = true;
-    }, 2000);
-    addShip(smallShip2);
+    }, 1000);
+    addShip(smallShip2, this.children);
   });
 
   let btnShipSmall3CPU = document.getElementById ('btnShipSmall3CPU');     // Small Ship 3 CPU
@@ -173,8 +175,8 @@ function displayCPU ()
     setTimeout(() => 
     {
       btnShipSmall3CPU.classList.remove('shipActive');
-    }, 2000);
-    addShip(smallShip3);
+    }, 1000);
+    addShip(smallShip3, this.children);
     battleship();
   });
 }
