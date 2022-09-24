@@ -31,6 +31,8 @@ function addShip (ship, list, btnNext, btnDiv)
           ship.coords[i].shipDiv = btnDiv[i];
           arrayBoardPlayer1[forId].style.backgroundColor = 'blue';
           arrayBoardPlayer1[forId].classList.add('onShip');
+          arrayBoardPlayer1[forId].disabled="disabled";
+          arrayBoardPlayer1[forId].style.cursor = 'not-allowed';
           forId += 10;
         }
         btnNext.disabled = false;
@@ -62,6 +64,8 @@ function addShip (ship, list, btnNext, btnDiv)
           ship.coords[i].shipDiv = btnDiv[i];
           arrayBoardPlayer1[forId].style.backgroundColor = 'blue';
           arrayBoardPlayer1[forId].classList.add('onShip');
+          arrayBoardPlayer1[forId].disabled="disabled";
+          arrayBoardPlayer1[forId].style.cursor = 'not-allowed';
           forId ++;
         }
         ship.hover = false;
@@ -202,7 +206,7 @@ function displayPlayer1 (list)
 
 function boardPlayer1 ()
 {
-  let list = document.querySelectorAll ('#boardPlayer1 div');
+  let list = document.querySelectorAll ('#boardPlayer1 fieldset');
 
   let btnRotate = document.getElementById ('btnRotate');
   btnRotate.addEventListener ('click', function ()

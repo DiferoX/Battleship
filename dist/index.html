@@ -10,6 +10,8 @@
   <body>
     <div class="mainContainer">
 
+      <img src="./images/battleship2.png" alt="" id="title2">
+
       <div id="divLeft"></div>
       <div id="divRight"></div>
 
@@ -18,6 +20,7 @@
           <label for="checkbox">N</label>
           <input type="checkbox" id="btnRotate" name="checkbox">
         </div>
+        <img src="./images/battleship.png" alt="" id="title">
       </div>
 
       <div id="gameboard">
@@ -48,7 +51,7 @@
           </button>
         </div>
 
-        <div class="contentShipBoard">
+        <div class="contentShipBoard" id="contentShipCPU">
           <button id="btnShipBigCPU" disabled>
             <div></div><div></div><div></div><div></div>
           </button>
@@ -70,7 +73,13 @@
         </div>
 
       </div>
-      <div id="displayWin" hidden></div>
+
+      <div id="displayWin">
+        <img src="./images/battleship2.png" alt="">
+        <p>The Winner is:</p>
+        <p id="winnerTxt">C P U</p>
+      </div>
+      
     </div>
 
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>

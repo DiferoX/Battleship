@@ -35,27 +35,32 @@ export class Ship
 
   onSunk ()
   {
-    let winPlayer1 = true;
-    objectsArrayPlayer1.forEach (object => 
-    {
-      if (object.isSunk === false)
-        winPlayer1 = false;
-    });
+    let displayWin = document.getElementById ('displayWin');
+    let winnerTxt = document.getElementById ('winnerTxt');
 
     let winCPU = true;
-    objectsArrayCPU.forEach (object => 
+    objectsArrayPlayer1.forEach (object => 
     {
       if (object.isSunk === false)
         winCPU = false;
     });
 
+    let winPlayer1 = true;
+    objectsArrayCPU.forEach (object => 
+    {
+      if (object.isSunk === false)
+        winPlayer1 = false;
+    });
+
     if (winPlayer1 === true)
     {
-      alert('Player 1 Win');
+      displayWin.style.display = 'flex';
+      winnerTxt.textContent = 'Player 1';
     }
     else if (winCPU === true)
     {
-      alert('CPU Win');
+      displayWin.style.display = 'flex';
+      winnerTxt.textContent = 'C P U';
     }
   }
 

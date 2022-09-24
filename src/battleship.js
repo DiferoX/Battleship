@@ -30,13 +30,14 @@ function moveCPUVsP1 (newArray)
     arrayBoardPlayer1[id].classList.remove('empty');
     arrayBoardPlayer1[id].classList.add('fail');
   }
+  arrayBoardPlayer1[id].style.cursor = 'not-allowed';
   newArray.splice(num, 1);
-  console.log (newArray);
+  //console.log (newArray);
 }
 
 function moveP1VsCPU (newArray)
 {
-  let listCPU = document.querySelectorAll ('#boardCPU div');
+  let listCPU = document.querySelectorAll ('#boardCPU fieldset');
 
   listCPU.forEach ((item) =>
   {
@@ -70,6 +71,8 @@ function moveP1VsCPU (newArray)
       arrayBoardCPU[id].classList.remove('empty');
       arrayBoardCPU[id].classList.add('fail');
     }
+    arrayBoardCPU[id].disabled="disabled";
+    arrayBoardCPU[id].style.cursor = 'not-allowed';
     moveCPUVsP1(newArray);
   }
   listCPU.forEach ((item) =>
@@ -79,15 +82,16 @@ function moveP1VsCPU (newArray)
 function battleship ()
 {
   let newArray = [];
-  let listBP1 = document.querySelectorAll ('#boardPlayer1 div');
+  let listBP1 = document.querySelectorAll ('#boardPlayer1 fieldset');
 
   for (let i = 0; i < arrayBoardPlayer1.length; i++)
     newArray[i] = Number(arrayBoardPlayer1[i].lastChild.textContent);
 
   listBP1.forEach ((item) =>
   {
-    item.classList.remove('onShip');
-    item.classList.add('empty');
+    item.disabled="disabled";
+    //item.classList.add('empty');
+    item.style.cursor = 'not-allowed';
   });
 
   moveP1VsCPU (newArray);

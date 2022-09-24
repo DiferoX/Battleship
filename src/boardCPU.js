@@ -19,7 +19,7 @@ function addShip (ship, btnDiv)
       forId = id;
       for (let i = 0; i < ship.length; i++)
       {
-        arrayBoardCPU[forId].style.backgroundColor = 'red';
+        //arrayBoardCPU[forId].style.backgroundColor = 'red';
         //arrayBoardCPU[forId].classList.add('onShip');
         ship.coords[i].coord = forId;
         ship.coords[i].shipDiv = btnDiv[i];
@@ -32,7 +32,7 @@ function addShip (ship, btnDiv)
       forId = id;
       for (let i = 0; i < ship.length; i++)
       {
-        arrayBoardCPU[forId].style.backgroundColor = 'red';
+        //arrayBoardCPU[forId].style.backgroundColor = 'red';
         //arrayBoardCPU[forId].classList.add('onShip');
         ship.coords[i].coord = forId;
         ship.coords[i].shipDiv = btnDiv[i];
@@ -185,7 +185,7 @@ function displayCPU ()
 
 function boardCPU ()
 {
-  //let list = document.querySelectorAll ('#boardCPU div');
+  //let list = document.querySelectorAll ('#boardCPU fieldset');
 
   let btnList = document.querySelectorAll ('.contentShipBoard button');
   function activeBtn ()

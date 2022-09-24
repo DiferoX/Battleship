@@ -14,14 +14,16 @@ function gameboard (rows, cols)
 
   for (let i = 0; i < (rows * cols); i++)
   {
-    let divsBoardPlayer1 = document.createElement('div');
+    //let divsBoardPlayer1 = document.createElement('div');
+    let divsBoardPlayer1 = document.createElement('fieldset');
     let txtBoardPlayer1 = document.createElement('p');
     txtBoardPlayer1.textContent = i;
     arrayBoardPlayer1[i] = divsBoardPlayer1;
     boardPlayer1.appendChild(divsBoardPlayer1);
     divsBoardPlayer1.appendChild(txtBoardPlayer1)
 
-    let divsBoardCPU = document.createElement('div');
+    //let divsBoardCPU = document.createElement('div');
+    let divsBoardCPU = document.createElement('fieldset');
     let txtBoardCPU = document.createElement('p');
     txtBoardCPU.textContent = i;
     arrayBoardCPU[i] = divsBoardCPU;
