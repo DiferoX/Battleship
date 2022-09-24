@@ -32,7 +32,7 @@ body
   align-items: center;
   flex-direction: column;
   background-image: url(./images/2308.jpg);
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   z-index: 0;
@@ -49,6 +49,15 @@ body
   background-color: rgba(17, 17, 17, 0.2);
   filter: blur(5px);
   z-index: 0;
+}
+
+#title2
+{
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.2;
+  height: 100vh;
 }
 
 #divLeft
@@ -72,13 +81,28 @@ body
 }
 
 
+/* ======== B O A R D I N F O ======== */
+
+#boardInfo
+{
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 15%;
+  left: 34%;
+  z-index: 2;
+}
+
+#title
+{
+  height: 20vh;
+  margin-top: 5vh;
+}
+
 /* ======== C H E C K B O X ======== */
 
 #checkbox
 {
-  position: absolute;
-  top: 0;
-  right: 0;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -166,11 +190,11 @@ input[type="checkbox"]::after
 #gameboard
 {
   height: 60vh;
-  width: 70%;
+  width: 90%;
   display: grid;
   justify-items: center;
   align-items: center;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   background-image: linear-gradient(to top left, rgba(0, 0, 255, 0.4), rgba(0, 255, 255, 0.8), rgba(0, 0, 255, 0.4), rgba(0, 255, 255, 0.8), rgba(0, 0, 255, 0.4));
   border-radius: 10px;
   box-shadow: 25px 25px 75px rgba(0, 0, 0, 0.25),
@@ -201,13 +225,18 @@ input[type="checkbox"]::after
   z-index: 1;
 }
 
+#boardCPU
+{
+  grid-column: 3 / 4;
+}
+
 #gameboard div.hide
 {
   clip-path: circle(0.0% at 100% 50%);
   transition: 2s;
 }
 
-#gameboard div div
+#gameboard div fieldset
 {
   opacity: 1;
   position: relative;
@@ -224,7 +253,7 @@ input[type="checkbox"]::after
   z-index: 1;
 }
 
-#gameboard div div.empty:hover:before
+#gameboard div fieldset.empty:hover:before
 {
   opacity: 1;
   content: '';
@@ -241,7 +270,7 @@ input[type="checkbox"]::after
 }
 
 
-#gameboard div div.onShip:before
+#gameboard div fieldset.onShip:before
 {
   opacity: 1;
   content: '';
@@ -259,7 +288,7 @@ input[type="checkbox"]::after
   pointer-events: none;
 }
 
-#gameboard div div.fail::before
+#gameboard div fieldset.fail::before
 {
   opacity: 1;
   content: '';
@@ -278,7 +307,7 @@ input[type="checkbox"]::after
   transition: 1s;
 }
 
-#gameboard div div.active::before
+#gameboard div fieldset.active::before
 {
   opacity: 1;
   content: '';
@@ -300,18 +329,18 @@ input[type="checkbox"]::after
   transition: 1s;
 }
 
-#gameboard div div.active:hover:before
+#gameboard div fieldset.active:hover:before
 {
   background-image: none;
 }
 
-#gameboard div div:hover
+#gameboard div fieldset:hover
 {
   background-color: rgba(17, 255, 255, 0.5);
   transition: 0.2s;
 }
 
-#gameboard div div p
+#gameboard div fieldset p
 {
   display: none;
   position: absolute;
@@ -323,10 +352,10 @@ input[type="checkbox"]::after
 
 .btnContent
 {
-  height: 20vh;
-  width: 60%;
+  height: 15vh;
+  width: 90%;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 10px;
   justify-items: center;
   align-items: center;
@@ -337,7 +366,7 @@ input[type="checkbox"]::after
 .contentShipBoard
 {
   height: 100%;
-  width: 100%;
+  width: 90%;
   padding: 2% 5%;
   display: flex;
   justify-content: space-between;
@@ -351,9 +380,14 @@ input[type="checkbox"]::after
   inset -5px -5px 15px rgba(0, 0, 0, 0.8);
 }
 
+#contentShipCPU
+{
+  grid-column: 3 / 4;
+}
+
 .contentShipBoard button
 {
-  padding-top: 20px;
+  padding-top: 6px;
   border-radius: 10px;
   border-top-left-radius: 40%;
   border-top-right-radius: 40%;
@@ -442,4 +476,43 @@ input[type="checkbox"]::after
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5),
   inset 2px 2px 3px rgba(255, 255, 255, 0.25),
   inset -3px -3px 5px rgba(0, 0, 0, 0.5);
+}
+
+
+/* ======== D I S P L A Y W I N ======== */
+
+#displayWin
+{
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: absolute;
+  height: 80vh;
+  width: 80%;
+  background-color: rgba(17, 17, 17, 0.9);
+  border-radius: 25px;
+  z-index: 10;
+  transition: 2s;
+}
+
+#displayWin img
+{
+  height: 50vh;
+}
+
+#displayWin p
+{
+  font-size: 10vh;
+  font-weight: bolder;
+  color: #0ff;
+  margin-bottom: 2vh;
+  text-shadow: 5px 5px 5px rgba(255, 255, 255, 0.2);
+}
+
+#displayWin #winnerTxt
+{
+  font-size: 15vh;
+  color: var(--firstLight);
+  margin-bottom: 25vh;
 }
