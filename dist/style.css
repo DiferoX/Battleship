@@ -85,17 +85,22 @@ body
 
 #boardInfo
 {
+  height: 90%;
+  width: 90%;
+  grid-row: 1 / 2;
+  grid-column: 2 / 3;
   display: flex;
+  justify-content: center;
   flex-direction: column;
-  position: absolute;
+  /* position: absolute;
   top: 15%;
-  left: 34%;
+  left: 34%; */
   z-index: 2;
 }
 
 #title
 {
-  height: 20vh;
+  height: 15vh;
   margin-top: 5vh;
 }
 
@@ -104,6 +109,7 @@ body
 #checkbox
 {
   display: flex;
+  justify-content: center;
   align-items: center;
   flex-direction: column;
 }
@@ -205,7 +211,7 @@ input[type="checkbox"]::after
   z-index: 1;
 }
 
-#gameboard div
+#gameboard #boardPlayer1, #gameboard #boardCPU
 {
   opacity: 1;
   clip-path: circle(100.0% at 50% 50%);
